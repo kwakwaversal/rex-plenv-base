@@ -5,10 +5,10 @@ A Rex module to install plenv (perl binary manager) and cpanm.
 # USAGE
 
 ```perl
-include qw/Rex::Rex::Base/;
+include qw/Rex::Plenv::Base/;
 
 task setup => make {
-  Rex::Rex::Base::setup();
+  Rex::Plenv::Base::setup();
 };
 ```
 
