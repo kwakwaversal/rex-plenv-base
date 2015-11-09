@@ -1,12 +1,15 @@
 # Rex::Plenv::Base
 
-A Rex module to install plenv (perl binary manager) and cpanm.
+A Rex module to install [plenv](https://github.com/tokuhirom/plenv) (perl binary
+  manager) which automatically runs `plenv install-cpanm` after setup is
+  complete.
 
 # USAGE
 
 ```perl
 include qw/Rex::Plenv::Base/;
 
+# prepare holds root-specific commands that need running first
 task prepare => sub {
   Rex::Plenv::Base::prepare();
 };
@@ -20,7 +23,8 @@ task setup => sub {
 
 ## meta.yml
 
-In the folder for the rex service you're creating, add a `meta.yml` file with something that looks like the following.
+In the folder for the Rex service you're creating, add a `meta.yml` file with
+something that looks like the following.
 
 ```perl
 Name: Some frontend service
@@ -32,7 +36,8 @@ Require:
     branch: master
 ```
 
-Once all your dependencies are configured for the service, run `rexify --resolve-deps` to bundle the module.
+Once all your dependencies are configured for the service, run `rexify
+--resolve-deps` to bundle the module.
 
 # See also
  * [Rex::NTP::Base](https://github.com/krimdomu/rex-ntp-base.git)
