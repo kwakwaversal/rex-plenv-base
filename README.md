@@ -7,6 +7,12 @@ A Rex module to install plenv (perl binary manager) and cpanm.
 ```perl
 include qw/Rex::Plenv::Base/;
 
+task prepare => sub {
+  Rex::Plenv::Base::super_setup();
+};
+
+auth for => "prepare" => user => "root";
+
 task setup => make {
   Rex::Plenv::Base::setup();
 };
