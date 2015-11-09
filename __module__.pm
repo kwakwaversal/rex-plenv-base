@@ -18,7 +18,7 @@ our %version_map = (
 );
 
 # The super_setup task needs root privileges. Run as root.
-task super_setup => make {
+task prepare => make {
   pkg [qw/build-essential curl git/], ensure => "latest";
 };
 
