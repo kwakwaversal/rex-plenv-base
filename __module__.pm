@@ -17,13 +17,14 @@ our %version_map = (
   redhat => "5.20.2",
 );
 
+# The super_setup task needs root privileges. Run as root.
+task super_setup => make {
+  pkg [qw/build-essential curl git/], ensure => "latest";
+};
+
 task setup => make {
   my $perl_version = param_lookup "perl_version",
     $version_map{ lc get_operating_system };
-
-  for my $pkg ([qw/build-essential curl git/]) {
-    pkg $pkg, ensure => "latest";
-  }
 
   # Commands taken from
   #
