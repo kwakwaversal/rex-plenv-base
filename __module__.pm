@@ -17,7 +17,7 @@ our %version_map = (
   redhat => "5.20.2",
 );
 
-# The super_setup task needs root privileges. Run as root.
+# The prepare task needs root privileges. Run as root.
 task prepare => make {
   pkg [qw/build-essential curl git/], ensure => "latest";
 };
@@ -46,7 +46,7 @@ task setup => make {
   append_if_no_such_line '~/.bash_profile', 'export PATH="$HOME/.plenv/bin:$PATH"';
   append_if_no_such_line '~/.bash_profile', 'eval "$(plenv init -)"';
 
-  # Install perl-build, which provides an plenv install command that simplifies
+  # Install perl-build, which provides a plenv install command that simplifies
   # the process of installing new Perl versions.
   run 'ls ~/.plenv/plugins/perl-build/';
   if ($? == 0) {
