@@ -1,4 +1,7 @@
 -----------------------------------------------------
 
+0.02  2015-11-12
+  - Fix README to show how to pass task parameter for specific Perl version.
+
 0.01  2015-11-11
   - First release.

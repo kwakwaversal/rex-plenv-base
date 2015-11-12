@@ -20,13 +20,13 @@ include qw/Rex::Plenv::Base/;
 
 # prepare holds root-specific commands that need running first
 task prepare => sub {
-  Rex::Plenv::Base::prepare();
+  Rex::Plenv::Base::prepare(@_);  # @_ required for Rex::Ext::ParamLookup
 };
 
 auth for => 'prepare' => user => 'root';
 
 task setup => sub {
-  Rex::Plenv::Base::setup();
+  Rex::Plenv::Base::setup(@_);    # @_ required for Rex::Ext::ParamLookup
 };
 ```
 
@@ -56,6 +56,16 @@ Require:
 
 Once all your dependencies are configured for the service, run `rexify
 --resolve-deps` to bundle the module.
+
+## Options
+
+If you want to install a specific version of Perl, you can pass the optional
+task parameter `--perl_version=5.20.0`.
+
+```bash
+ssh-copy-id someuser@yourhost.org
+rex -H yourhost.org -u someuser setup --perl_version=5.22.0
+```
 
 # See also
  * [Rex::NTP::Base](https://github.com/krimdomu/rex-ntp-base.git)
