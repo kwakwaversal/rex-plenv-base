@@ -67,6 +67,23 @@ ssh-copy-id someuser@yourhost.org
 rex -H yourhost.org -u someuser setup --perl_version=5.22.0
 ```
 
+# Additional configuration
+
+If you have a firewall, and need to punch a hole in it to be able to install
+plenv, the configuration below might/should help.
+
+## iptables
+
+```bash
+-A FORWARD -o eth0 -j PLENV-ENV
+-A PLENV-ENV -m state --state ESTABLISHED,RELATED -j ACCEPT
+-A PLENV-ENV -d 192.30.252.0/22 -p tcp -m tcp --dport 22    -m comment --comment "svn://github.com" -j ACCEPT
+-A PLENV-ENV -d 192.30.252.0/22 -p tcp -m tcp --dport 443   -m comment --comment "https://github.com" -j ACCEPT
+-A PLENV-ENV -d 192.30.252.0/22 -p tcp -m tcp --dport 9418  -m comment --comment "git://github.com" -j ACCEPT
+-A PLENV-ENV -d 207.171.7.91    -p tcp -m tcp --dport 80    -m comment --comment "cpan.org" -j ACCEPT
+-A PLENV-ENV -d 94.242.223.198  -p tcp -m tcp --dport 80    -m comment --comment "cpan.org" -j ACCEPT
+```
+
 # See also
  * [Rex::NTP::Base](https://github.com/krimdomu/rex-ntp-base.git)
  * [Rex::OS::Base](https://github.com/krimdomu/rex-os-base.git)
