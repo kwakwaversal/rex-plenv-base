@@ -77,7 +77,7 @@ plenv, the configuration below might/should help.
 ```bash
 -A FORWARD -o eth0 -j PLENV-ENV
 -A PLENV-ENV -m state --state ESTABLISHED,RELATED -j ACCEPT
--A PLENV-ENV -d 192.30.252.0/22 -p tcp -m tcp --dport 22    -m comment --comment "svn://github.com" -j ACCEPT
+-A PLENV-ENV -d 192.30.252.0/22 -p tcp -m tcp --dport 22    -m comment --comment "ssh://github.com" -j ACCEPT
 -A PLENV-ENV -d 192.30.252.0/22 -p tcp -m tcp --dport 443   -m comment --comment "https://github.com" -j ACCEPT
 -A PLENV-ENV -d 192.30.252.0/22 -p tcp -m tcp --dport 9418  -m comment --comment "git://github.com" -j ACCEPT
 -A PLENV-ENV -d 207.171.7.91    -p tcp -m tcp --dport 80    -m comment --comment "cpan.org" -j ACCEPT
