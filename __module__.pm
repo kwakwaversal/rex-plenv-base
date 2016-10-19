@@ -11,10 +11,10 @@ use Rex -base;
 use Rex::Ext::ParamLookup;
 
 our %version_map = (
-  debian => "5.20.2",
-  ubuntu => "5.20.2",
-  centos => "5.20.2",
-  redhat => "5.20.2",
+  debian => "5.24.0",
+  ubuntu => "5.24.0",
+  centos => "5.24.0",
+  redhat => "5.24.0",
 );
 
 # The prepare task needs root privileges. Run as root.
